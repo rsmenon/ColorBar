@@ -6,9 +6,11 @@
 
 BeginPackage["ColorBar`"]
 
-ColorBar::usage = ""
+ColorBar::usage = "ColorBar[\"Named Gradient or ColorFunction\"] will open up a ColorFunction designer for the specified color function or gradient."
 
 Begin["`Private`"]
+
+Unprotect@ColorBar
 ColorBar[cf : _String | _ColorDataFunction | _Function] :=
         DynamicModule[
             {
@@ -56,9 +58,10 @@ ColorBar[cf : _String | _ColorDataFunction | _Function] :=
 
             initializeSettings[colorData];
 
-            getXPosition[] := Clip[First@MousePosition["Graphics"], {0,1}];
+            getXPosition[] := With[{mp = MousePosition["Graphics"]}, If[mp === None, $Failed, Clip[First@mp, {0,1}]]];
 
             SetAttributes[addControl, HoldAll];
+            addControl[$Failed] = Null;
             addControl[pos_] := With[{symP = Unique@local, symC = Unique@local},
                 AppendTo[controlPoints, Hold@symP];
                 AppendTo[controlColors, Hold@symC];
@@ -67,6 +70,7 @@ ColorBar[cf : _String | _ColorDataFunction | _Function] :=
             ];
 
             SetAttributes[removeControl, HoldAll];
+            removeControl[$Failed] = Null;
             removeControl[pos_] := ({controlPoints, controlColors} =
                     Transpose@{controlPoints, controlColors} /. {Hold[pos], _} :> Sequence[] // Transpose);
 
@@ -91,39 +95,38 @@ ColorBar[cf : _String | _ColorDataFunction | _Function] :=
 
                                 color = If[# === $Canceled, color, #] &@SystemDialogInput["Color", color]; updateColorFunction[]
                             ],
-                            "MouseDragged" :> (pos = getXPosition[]; updateColorFunction[])
+                            "MouseDragged" :> (pos = If[# === $Failed, pos, getXPosition[]]; updateColorFunction[])
                         }
                     ];
 
-            Panel@Column[{
-                Row[{
-
+            Interpretation[
+                Panel@Column[{
                     PopupMenu[Dynamic[colorData, initializeSettings], colorDataList],
-                    Spacer@10,
-                    Button["Generate", NotebookWrite[EvaluationCell[], generateColorFunction[ReleaseHold@controlPoints, ReleaseHold@controlColors]]]
-                }],
 
-                Column[{
-                    EventHandler[
-                        Graphics[
-                            Dynamic[control @@@ Transpose[{controlPoints, controlColors}] // ReleaseHold],
-                            PlotRange -> {{0, 1}, All}, PlotRangePadding -> 0,
-                            ImageSize -> 300, ImagePadding -> {{10, 10}, {0, 0}}
+                    Column[{
+                        EventHandler[
+                            Graphics[
+                                Dynamic[control @@@ Transpose[{controlPoints, controlColors}] // ReleaseHold],
+                                PlotRange -> {{0, 1}, All}, PlotRangePadding -> 0,
+                                ImageSize -> 300, ImagePadding -> {{10, 10}, {0, 0}}
+                            ],
+                            {"MouseClicked" :> If[CurrentValue["CommandKey"], addControl[getXPosition[]]]}
                         ],
-                        {"MouseClicked" :> If[CurrentValue["CommandKey"], addControl[getXPosition[]]]}
-                    ],
 
-                    Dynamic@Graphics[
-                        colorbar@generateColorFunction[ReleaseHold@controlPoints, ReleaseHold@controlColors],
-                        PlotRange -> {{0, 1}, All}, PlotRangePadding -> 0, ImageSize -> 300, ImagePadding -> {{10, 10}, {15, 0}},
-                        Frame -> True, FrameTicks -> {True, False, False, False}, FrameTicksStyle -> Directive[FontSize -> 12]
-                    ]
-                }]
-            }]
+                        Dynamic@Graphics[
+                            colorbar@generateColorFunction[ReleaseHold@controlPoints, ReleaseHold@controlColors],
+                            PlotRange -> {{0, 1}, All}, PlotRangePadding -> 0, ImageSize -> 300, ImagePadding -> {{10, 10}, {15, 0}},
+                            Frame -> True, FrameTicks -> {True, False, False, False}, FrameTicksStyle -> Directive[FontSize -> 12]
+                        ]
+                    }]
+                }],
+                Dynamic@generateColorFunction[ReleaseHold@controlPoints, ReleaseHold@controlColors]
+            ]
         ]
 
 ColorBar[] := ColorBar[First@ColorData["Gradients"]]
 
+SetAttributes[ColorBar, {Protected, ReadProtected}];
 End[]
 
 EndPackage[]
