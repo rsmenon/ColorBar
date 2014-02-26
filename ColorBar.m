@@ -25,7 +25,7 @@ ColorBar[cf : _String | _ColorDataFunction | _Function] :=
             colorbar = Raster[{Range[0, 100] / 100}, {{0, 0}, {1, 0.1}}, ColorFunction -> #] &;
             colorData = Switch[cf, _String, cf, _ColorDataFunction, First@cf, _Function, "Custom"];
 
-            getColorFunction[cd_] := Switch[cd, "Custom", colorDataList = colorDataList ~Join~ cd;cf, _, ColorData[cd]];
+            getColorFunction[cd_] := Switch[cd, "Custom", colorDataList = colorDataList ~Join~ {cd};cf, _, ColorData[cd]];
 
             getControlPoints[cd_] :=
                     Block[{func},
