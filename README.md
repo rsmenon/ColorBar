@@ -1,20 +1,38 @@
 ColorBar
 ========
 
-`ColorBar` is an interactive `ColorFunction` designer for _Mathematica_. The `ColorBar` function can be used with both built-in color functions and custom ones as:
+`ColorBar` is an interactive `ColorFunction` designer for _Mathematica_. 
 
-1. `ColorBar["IslandColors"]` or `ColorBar[ColorData["IslandColors"]]` for built-ins.
+###Usage
+The `ColorBar` function can be used with  built-in color functions
 
-2. `ColorBar[Blend[{Blue, Red}, #]&]` for custom color functions.
+![ColorBar usage: built-in](https://f.cloud.github.com/assets/2389211/2266364/b382da98-9e96-11e3-9437-aa9ae55cab77.png)
 
-The following functionality is provided:
+or with custom color functions
 
-1. Click and drag the control points (triangles) to change the transition region
+![ColorBar usage: custom](https://f.cloud.github.com/assets/2389211/2266386/9821c60a-9e97-11e3-9624-f348da7686be.png)
 
-2. Click on a control point to change its color
+Use `Setting` to extract the corresponding color function.
 
-3. Click while holding down Command (or Alt in Windows & Linux) to add a control point at that location.
+![Setting](https://f.cloud.github.com/assets/2389211/2266566/8bb890ec-9e9c-11e3-82d6-c11da209bb90.png)
 
-4. Click on a control point while holding Shift to delete a control point (a minimum of 2 control points will always remain).
+###Modifying control points
 
-5. Use `Setting` to extract the corresponding color function.
+ - Click and drag the control points (triangles) to change the transition region
+
+ - Click on a control point to change its color
+
+ - Click while holding down Command (or Alt in Windows & Linux) to add a control point at that location.
+
+ - Click on a control point while holding Shift to delete a control point (a minimum of 2 control points will always remain).
+
+###Example
+
+Combine all of the above to design color functions on-the-fly. Use "Evaluate in place" on `ColorBar[]` in the following code to use the colorbar designer inside a plotting function.
+
+```ruby
+DensityPlot[x^4 - 2 x^2 + y^4 - 2 y^2 + 1, {x, -2, 2}, {y, -2, 2}, 
+	ColorFunction -> Setting@ColorBar[], PlotPoints -> 150, PlotRange -> {-2, 2}]
+```
+
+![Example](https://f.cloud.github.com/assets/2389211/2266692/b142697e-9ea0-11e3-8b25-51c7515b8d97.png)
