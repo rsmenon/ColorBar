@@ -100,7 +100,7 @@ ColorBar[cf : _String | _ColorDataFunction | _Function] :=
                     ];
 
             Interpretation[
-                Panel@Column[{
+                Deploy@Panel@Column[{
                     PopupMenu[Dynamic[colorData, initializeSettings], colorDataList],
 
                     Column[{
