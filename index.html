@@ -1,0 +1,78 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Colorbar by rsmenon</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>Colorbar</h1>
+        <p>A Mathematica package to design custom color functions</p>
+
+        <p class="view"><a href="https://github.com/rsmenon/ColorBar">View the Project on GitHub <small>rsmenon/ColorBar</small></a></p>
+
+
+        <ul>
+          <li><a href="https://github.com/rsmenon/ColorBar/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/rsmenon/ColorBar/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/rsmenon/ColorBar">View On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        <h1>
+<a name="colorbar" class="anchor" href="#colorbar"><span class="octicon octicon-link"></span></a>ColorBar</h1>
+
+<p><code>ColorBar</code> is an interactive <code>ColorFunction</code> designer for <em>Mathematica</em>. It allows you to easily modify existing color functions, change colors or vary the blending fraction and get the final result in other applications. You can also use it directly inside a plotting function.</p>
+
+<h3>
+<a name="installation--basic-usage" class="anchor" href="#installation--basic-usage"><span class="octicon octicon-link"></span></a>Installation &amp; basic usage</h3>
+
+<p>Copy the <code>ColorBar.m</code> file to your <code>$UserBaseDirectory</code> and load it in via <code>Needs["ColorBar`"]</code>. The <code>ColorBar</code> function can be used with  built-in color functions</p>
+
+<p><img src="https://f.cloud.github.com/assets/2389211/2266364/b382da98-9e96-11e3-9437-aa9ae55cab77.png" alt="ColorBar usage: built-in"></p>
+
+<p>or with custom color functions</p>
+
+<p><img src="https://f.cloud.github.com/assets/2389211/2266386/9821c60a-9e97-11e3-9624-f348da7686be.png" alt="ColorBar usage: custom"></p>
+
+<p>Use <code>Setting</code> to extract the corresponding color function.</p>
+
+<p><img src="https://f.cloud.github.com/assets/2389211/2266566/8bb890ec-9e9c-11e3-82d6-c11da209bb90.png" alt="Setting"></p>
+
+<h3>
+<a name="modifying-control-points" class="anchor" href="#modifying-control-points"><span class="octicon octicon-link"></span></a>Modifying control points</h3>
+
+<ul>
+<li><p>Click and drag the control points (triangles) to change the transition region</p></li>
+<li><p>Click on a control point to change its color</p></li>
+<li><p>Click while holding down Command (or Alt in Windows &amp; Linux) to add a control point at that location.</p></li>
+<li><p>Click on a control point while holding Shift to delete a control point (a minimum of 2 control points will always remain).</p></li>
+</ul><h3>
+<a name="example" class="anchor" href="#example"><span class="octicon octicon-link"></span></a>Example</h3>
+
+<p>Use "Evaluate in place" on <code>ColorBar[]</code> in the following code to use the colorbar designer inside a plotting function.</p>
+
+<div class="highlight highlight-ruby"><pre><span class="no">DensityPlot</span><span class="o">[</span><span class="n">x</span><span class="o">^</span><span class="mi">4</span> <span class="o">-</span> <span class="mi">2</span> <span class="n">x</span><span class="o">^</span><span class="mi">2</span> <span class="o">+</span> <span class="n">y</span><span class="o">^</span><span class="mi">4</span> <span class="o">-</span> <span class="mi">2</span> <span class="n">y</span><span class="o">^</span><span class="mi">2</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="p">{</span><span class="n">x</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">},</span> <span class="p">{</span><span class="n">y</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">},</span> 
+    <span class="no">ColorFunction</span> <span class="o">-&gt;</span> <span class="no">Setting</span><span class="vi">@ColorBar</span><span class="o">[]</span><span class="p">,</span> <span class="no">PlotPoints</span> <span class="o">-&gt;</span> <span class="mi">150</span><span class="p">,</span> <span class="no">PlotRange</span> <span class="o">-&gt;</span> <span class="p">{</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">}</span><span class="o">]</span>
+</pre></div>
+
+<p><img src="https://f.cloud.github.com/assets/2389211/2266692/b142697e-9ea0-11e3-8b25-51c7515b8d97.png" alt="Example"></p>
+      </section>
+      <footer>
+        <p>This project is maintained by <a href="https://github.com/rsmenon">rsmenon</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <script src="javascripts/scale.fix.js"></script>
+    
+  </body>
+</html>
