@@ -1,10 +1,10 @@
 ColorBar
 ========
 
-`ColorBar` is an interactive `ColorFunction` designer for _Mathematica_. 
+`ColorBar` is an interactive `ColorFunction` designer for _Mathematica_. It allows you to easily modify existing color functions, change colors or vary the blending fraction and get the final result in other applications. You can also use it directly inside a plotting function.
 
-###Usage
-The `ColorBar` function can be used with  built-in color functions
+###Installation & basic usage
+Copy the `ColorBar.m` file to your `$UserBaseDirectory` and load it in via ``Needs["ColorBar`"]``. The `ColorBar` function can be used with  built-in color functions
 
 ![ColorBar usage: built-in](https://f.cloud.github.com/assets/2389211/2266364/b382da98-9e96-11e3-9437-aa9ae55cab77.png)
 
@@ -28,7 +28,7 @@ Use `Setting` to extract the corresponding color function.
 
 ###Example
 
-Combine all of the above to design color functions on-the-fly. Use "Evaluate in place" on `ColorBar[]` in the following code to use the colorbar designer inside a plotting function.
+Use "Evaluate in place" on `ColorBar[]` in the following code to use the colorbar designer inside a plotting function.
 
 ```ruby
 DensityPlot[x^4 - 2 x^2 + y^4 - 2 y^2 + 1, {x, -2, 2}, {y, -2, 2}, 
