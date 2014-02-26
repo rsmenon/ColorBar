@@ -6,7 +6,7 @@ ColorBar
 ###Installation & basic usage
 Copy the `ColorBar.m` file to your `$UserBaseDirectory` and load it in via ``Needs["ColorBar`"]``. The `ColorBar` function can be used with  built-in color functions
 
-![ColorBar usage: built-in](https://f.cloud.github.com/assets/2389211/2266364/b382da98-9e96-11e3-9437-aa9ae55cab77.png)
+![ColorBar usage: built-in](https://f.cloud.github.com/assets/2389211/2275910/4502c83e-9f2d-11e3-83d2-4117696028f2.png)
 
 or with custom color functions
 
@@ -14,7 +14,7 @@ or with custom color functions
 
 Use `Setting` to extract the corresponding color function.
 
-![Setting](https://f.cloud.github.com/assets/2389211/2266566/8bb890ec-9e9c-11e3-82d6-c11da209bb90.png)
+![Setting](https://f.cloud.github.com/assets/2389211/2275909/45024cce-9f2d-11e3-8b1d-093d1fa80efb.png)
 
 ###Modifying control points
 
