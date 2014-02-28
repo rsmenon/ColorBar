@@ -95,7 +95,7 @@ ColorBar[cf : _String | _ColorDataFunction | _Function] :=
 
                                 color = If[# === $Canceled, color, #] &@SystemDialogInput["Color", color]; updateColorFunction[]
                             ],
-                            "MouseDragged" :> (pos = If[# === $Failed, pos, getXPosition[]]; updateColorFunction[])
+                            "MouseDragged" :> (pos = If[# === $Failed, pos, #] &@getXPosition[]; updateColorFunction[])
                         }
                     ];
 
