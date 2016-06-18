@@ -96,7 +96,8 @@ ColorBar[cf : _String | _ColorDataFunction | _Function] :=
                                 color = If[# === $Canceled, color, #] &@SystemDialogInput["Color", color]; updateColorFunction[]
                             ],
                             "MouseDragged" :> (pos = If[# === $Failed, pos, #] &@getXPosition[]; updateColorFunction[])
-                        }
+                        },
+                        Method -> "Queued"
                     ];
 
             Interpretation[
@@ -110,7 +111,8 @@ ColorBar[cf : _String | _ColorDataFunction | _Function] :=
                                 PlotRange -> {{0, 1}, All}, PlotRangePadding -> 0,
                                 ImageSize -> 300, ImagePadding -> {{10, 10}, {0, 0}}
                             ],
-                            {"MouseClicked" :> If[CurrentValue["CommandKey"], addControl[getXPosition[]]]}
+                            {"MouseClicked" :> If[CurrentValue["CommandKey"], addControl[getXPosition[]]]},
+                            Method -> "Queued"
                         ],
 
                         Dynamic@Graphics[
