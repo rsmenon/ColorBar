@@ -3,7 +3,7 @@ ColorBar
 
 `ColorBar` is an interactive `ColorFunction` designer for _Mathematica_. It allows you to easily modify existing color functions, change colors or vary the blending fraction and get the final result in other applications. You can also use it directly inside a plotting function.
 
-###Installation & basic usage
+### Installation & basic usage
 Copy the `ColorBar.m` file to your `$UserBaseDirectory` and load it in via ``Needs["ColorBar`"]``. The `ColorBar` function can be used with  built-in color functions
 
 ![ColorBar usage: built-in](https://f.cloud.github.com/assets/2389211/2275910/4502c83e-9f2d-11e3-83d2-4117696028f2.png)
@@ -16,7 +16,7 @@ Use `Setting` to extract the corresponding color function.
 
 ![Setting](https://f.cloud.github.com/assets/2389211/2275909/45024cce-9f2d-11e3-8b1d-093d1fa80efb.png)
 
-###Modifying control points
+### Modifying control points
 
  - Click and drag the control points (triangles) to change the transition region
 
@@ -26,7 +26,7 @@ Use `Setting` to extract the corresponding color function.
 
  - Click on a control point while holding Shift to delete a control point (a minimum of 2 control points will always remain).
 
-###Example
+### Example
 
 Use "Evaluate in place" on `ColorBar[]` in the following code to use the colorbar designer inside a plotting function.
 
