@@ -1,3 +1,5 @@
+> ## ⚠️ THIS PACKAGE IS NOT MAINTAINED
+
 ColorBar
 ========
 
@@ -16,6 +18,8 @@ Use `Setting` to extract the corresponding color function.
 
 ![Setting](https://f.cloud.github.com/assets/2389211/2275909/45024cce-9f2d-11e3-8b1d-093d1fa80efb.png)
 
+Use "Evaluate in place" on `ColorBar[]` to use the colorbar designer inside a plotting function.
+
 ### Modifying control points
 
  - Click and drag the control points (triangles) to change the transition region
@@ -25,14 +29,3 @@ Use `Setting` to extract the corresponding color function.
  - Click while holding down Command (or Alt in Windows & Linux) to add a control point at that location.
 
  - Click on a control point while holding Shift to delete a control point (a minimum of 2 control points will always remain).
-
-### Example
-
-Use "Evaluate in place" on `ColorBar[]` in the following code to use the colorbar designer inside a plotting function.
-
-```
-DensityPlot[x^4 - 2 x^2 + y^4 - 2 y^2 + 1, {x, -2, 2}, {y, -2, 2},
-	ColorFunction -> Setting@ColorBar[], PlotPoints -> 150, PlotRange -> {-2, 2}]
-```
-
-![Example](https://f.cloud.github.com/assets/2389211/2266692/b142697e-9ea0-11e3-8b25-51c7515b8d97.png)
